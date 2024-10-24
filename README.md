@@ -19,6 +19,8 @@ If you need local Postgres database
 
 This command create a local volume in root project to save data.
 
+- Run `ecommerce.sql` script to fill the database with data
+
 ## My process
 
 ### Built with
