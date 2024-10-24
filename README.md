@@ -7,7 +7,7 @@
 Clone this repository
 
 ```bash
-git clone https://github.com/baguilar6174/
+git clone https://github.com/baguilar6174/java-learning-jdbc.git
 ```
 
 ## Running the app
