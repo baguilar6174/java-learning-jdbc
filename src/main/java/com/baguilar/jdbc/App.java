@@ -20,6 +20,7 @@ public class App
                 "postgres",
                 "123456"
         );
+
         try {
             Connection connection = dbConnectionManager.getConnection();
             Statement statement = connection.createStatement();
