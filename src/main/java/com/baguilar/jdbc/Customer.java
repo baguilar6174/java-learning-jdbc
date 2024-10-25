@@ -16,7 +16,7 @@ public class Customer implements DataTransferObject {
 
     @Override
     public long getId() {
-        return 0;
+        return id;
     }
 
     public void setId(long id) {

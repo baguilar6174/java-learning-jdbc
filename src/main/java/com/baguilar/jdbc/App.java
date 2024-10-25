@@ -24,6 +24,8 @@ public class App
         try {
             Connection connection = dbConnectionManager.getConnection();
 
+            // Simple connection and query execution
+
             /* Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM CUSTOMER");
             while (resultSet.next()) {
@@ -33,7 +35,7 @@ public class App
 
             // Create new record in Customer table
 
-            CustomerDAO customerDAO = new CustomerDAO(connection);
+            /* CustomerDAO customerDAO = new CustomerDAO(connection);
             Customer customer = new Customer();
 
             customer.setFirstname("Bryan");
@@ -45,7 +47,22 @@ public class App
             customer.setState("NY");
             customer.setZipcode("11111");
 
-            customerDAO.create(customer);
+            customerDAO.create(customer); */
+
+            // Get data from Database
+
+            /* CustomerDAO customerDAO = new CustomerDAO(connection);
+            Customer customer = customerDAO.findById(1000);
+            System.out.println(customer.getFirstname() + " " + customer.getLastname());*/
+
+            // Update data from database
+
+            CustomerDAO customerDAO = new CustomerDAO(connection);
+            Customer customer = customerDAO.findById(10000);
+            System.out.println(customer.getFirstname() + " " + customer.getLastname() + " " + customer.getEmail());
+            customer.setEmail("baguilar6174@test.com");
+            customer = customerDAO.update(customer);
+            System.out.println(customer.getFirstname() + " " + customer.getLastname() + " " + customer.getEmail());
 
         } catch (SQLException exception) {
             exception.printStackTrace();

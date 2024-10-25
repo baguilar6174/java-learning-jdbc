@@ -52,6 +52,31 @@ If you're using a DAO as a pure abstraction layer you're going to have a DTO or 
 - Provides ability to leverage common paths for basic CRUD operations.
 - Loses value when you have a lot of custom methods.
 
+### What is a ResultSet?
+
+- A multidimensional array that returns a database statement
+- Metadata associated with the Query and where the cursor is as far as reading that table that comes out
+- Limited functionality on size and scope of results
+- Operates like an iterator in many ways
+
+#### Iteration over ResultSet
+
+- Simple repetitive operation
+- `while(resultSet.next())`
+- Within loop, unpack the structure
+
+#### Accessing Values
+
+- By column name
+- By index
+- Note the names aren't necessarily the same as the table definition - it's the query definition that matters.
+
+#### Advanced Operations and Settings
+
+- Navigation based on type
+- Concurrency is updatable
+- Holdability lives past commit
+
 ---
 
 ## My process
