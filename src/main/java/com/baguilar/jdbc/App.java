@@ -2,6 +2,7 @@ package com.baguilar.jdbc;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Database connection
@@ -24,7 +25,7 @@ public class App
 
             // Simple CRUD operations in database
 
-            CustomerDAO customerDAO = new CustomerDAO(connection);
+            /* CustomerDAO customerDAO = new CustomerDAO(connection);
             Customer customer = new Customer();
 
             customer.setFirstname("Bryan");
@@ -50,13 +51,19 @@ public class App
             System.out.println(customerCreated);
 
             // Delete
-            customerDAO.delete(customerCreated.getId());
+            customerDAO.delete(customerCreated.getId());*/
 
             // ------------------------------------------------------------------------------------------------------
 
-            OrderDAO orderDAO = new OrderDAO(connection);
+            /* OrderDAO orderDAO = new OrderDAO(connection);
             Order order = orderDAO.findById(1000);
-            System.out.println(order);
+            System.out.println(order); */
+
+            // -------------------------------------------------------------------------------------------------------
+
+            OrderDAO orderDAO = new OrderDAO(connection);
+            List<Order> orders = orderDAO.getOrdersForCustomer(789);
+            orders.forEach(System.out::println);
 
         } catch (SQLException exception) {
             exception.printStackTrace();
