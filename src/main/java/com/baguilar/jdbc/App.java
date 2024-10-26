@@ -52,6 +52,12 @@ public class App
             // Delete
             customerDAO.delete(customerCreated.getId());
 
+            // ------------------------------------------------------------------------------------------------------
+
+            OrderDAO orderDAO = new OrderDAO(connection);
+            Order order = orderDAO.findById(1000);
+            System.out.println(order);
+
         } catch (SQLException exception) {
             exception.printStackTrace();
         }

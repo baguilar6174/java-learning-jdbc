@@ -77,6 +77,22 @@ If you're using a DAO as a pure abstraction layer you're going to have a DTO or 
 - Concurrency is updatable
 - Holdability lives past commit
 
+### The repository Pattern
+
+- The difference between the repository pattern and DAO pattern is that the repository pattern focuses only on single table access per clas.
+- Instead of joining in the database, you'll joining in code
+- Complex joins in the database require single-instance databases
+- Allows sharding of database in such a way you can focus on single-table access instead of accessing the entire database as a whole
+- You can store one piece of data in a separate database to facilitate distribution
+
+#### Where are your constraints?
+
+- Is your application database constrained?, then repository pattern can help, because you don't do joins in database.
+- Is your application horizontally scalable?, then repository pattern fits in
+- Is your application vertical scalable?, then DAO can help
+- Is your data highly normalized?
+- Do you need atomic transactions that cross data table?
+
 ---
 
 ## My process

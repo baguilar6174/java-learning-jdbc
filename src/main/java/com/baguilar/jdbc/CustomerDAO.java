@@ -36,7 +36,6 @@ public class CustomerDAO extends DataAccessObject<Customer> {
                 customer.setState(resultSet.getString("state"));
                 customer.setZipcode(resultSet.getString("zipcode"));
             }
-            preparedStatement.execute();
         } catch (SQLException exception) {
             exception.printStackTrace();
             throw new RuntimeException(exception);
