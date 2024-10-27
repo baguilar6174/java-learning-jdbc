@@ -93,6 +93,34 @@ If you're using a DAO as a pure abstraction layer you're going to have a DTO or 
 - Is your data highly normalized?
 - Do you need atomic transactions that cross data table?
 
+### Transactions
+
+- At its simplest form, a unit of work
+- The rule is that all work is completed or all fails, no in between
+- Powerful concept that must be managed
+- Breaks down in distributed systems quickly
+
+#### Commit
+
+- The commit point tells the system that the transaction is done
+- Can be "commited" to disk
+- Often held in swap until this point
+
+#### Rollback
+
+- Returns the data to the state it was prior to the transaction starting
+- If no locking and another transaction completed, the data is not lost, only the current transaction
+- All uncommited data is "purged"
+- Often as part of a failure scenario, but no required
+
+#### Auto-commit
+
+- Auto-commit is not transactional
+- Data is immediately committed
+- There is no concept of atomic transactions
+- Not recommended for most, if not all, use cases utilizing RDBMS
+- Often either a driver or a transactional setting
+
 ---
 
 ## My process

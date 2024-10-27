@@ -16,6 +16,8 @@ public class CustomerDAO extends DataAccessObject<Customer> {
     private static final String UPDATE = "UPDATE customer SET first_name = ?, last_name = ?, email = ?, phone = ?, address = ?, city = ?, state = ?, zipcode = ? WHERE customer_id = ?";
     private static final String DELETE = "DELETE FROM customer WHERE customer_id = ?";
     private static final String GET_ALL = "SELECT customer_id, first_name, last_name, email, phone, address, city, state, zipcode FROM customer ORDER BY last_name, first_name LIMIT ?";
+    private static final String GET_ALL_PAGED = "SELECT customer_id, first_name, last_name, email, phone, address, city, state, zipcode FROM customer ORDER BY last_name, first_name LIMIT ? OFFSET ?";
+
 
     public CustomerDAO(Connection connection) {
         super(connection);
@@ -114,6 +116,36 @@ public class CustomerDAO extends DataAccessObject<Customer> {
         List<Customer> customers = new ArrayList<>();
         try (PreparedStatement preparedStatement = this.connection.prepareStatement(GET_ALL)) {
             preparedStatement.setInt(1, limit);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Customer customer = new Customer();
+                customer.setId(resultSet.getLong("customer_id"));
+                customer.setFirstname(resultSet.getString("first_name"));
+                customer.setLastname(resultSet.getString("last_name"));
+                customer.setEmail(resultSet.getString("email"));
+                customer.setPhone(resultSet.getString("phone"));
+                customer.setAddress(resultSet.getString("address"));
+                customer.setCity(resultSet.getString("city"));
+                customer.setState(resultSet.getString("state"));
+                customer.setZipcode(resultSet.getString("zipcode"));
+                customers.add(customer);
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            throw new RuntimeException(exception);
+        }
+        return customers;
+    }
+
+    public List<Customer> findAllPaged(int limit, int pageNumber) {
+
+        List<Customer> customers = new ArrayList<>();
+        int offset = (( pageNumber - 1 ) * limit);
+
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement(GET_ALL_PAGED)) {
+            if (limit < 1) limit = 10;
+            preparedStatement.setInt(1, limit);
+            preparedStatement.setInt(2, offset);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Customer customer = new Customer();

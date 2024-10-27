@@ -51,11 +51,20 @@ public class App
             System.out.println(customerCreated);
 
             // Delete
-            customerDAO.delete(customerCreated.getId());*/
+            customerDAO.delete(customerCreated.getId());
 
-            // Get All
+            // Get All order and limit
+            List<Customer> customers = customerDAO.findAllSorted(20);
+            customers.forEach(System.out::println); */
+
+            // Get All with pagination
             List<Customer> customers = customerDAO.findAllSorted(20);
             customers.forEach(System.out::println);
+            System.out.println("\nPaged");
+            for (int i = 1; i < 3; i++) {
+                System.out.println("\nPage number: " + i + "\n");
+                customerDAO.findAllPaged(10, i).forEach(System.out::println);
+            }
 
             // ------------------------------------------------------------------------------------------------------
 
