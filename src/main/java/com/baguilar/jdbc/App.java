@@ -25,8 +25,8 @@ public class App
 
             // Simple CRUD operations in database
 
-            /* CustomerDAO customerDAO = new CustomerDAO(connection);
-            Customer customer = new Customer();
+            CustomerDAO customerDAO = new CustomerDAO(connection);
+            /* Customer customer = new Customer();
 
             customer.setFirstname("Bryan");
             customer.setLastname("Aguilar");
@@ -53,6 +53,10 @@ public class App
             // Delete
             customerDAO.delete(customerCreated.getId());*/
 
+            // Get All
+            List<Customer> customers = customerDAO.findAllSorted(20);
+            customers.forEach(System.out::println);
+
             // ------------------------------------------------------------------------------------------------------
 
             /* OrderDAO orderDAO = new OrderDAO(connection);
@@ -61,9 +65,9 @@ public class App
 
             // -------------------------------------------------------------------------------------------------------
 
-            OrderDAO orderDAO = new OrderDAO(connection);
+            /* OrderDAO orderDAO = new OrderDAO(connection);
             List<Order> orders = orderDAO.getOrdersForCustomer(789);
-            orders.forEach(System.out::println);
+            orders.forEach(System.out::println); */
 
         } catch (SQLException exception) {
             exception.printStackTrace();
