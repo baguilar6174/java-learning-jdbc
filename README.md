@@ -1,7 +1,5 @@
 # Learning JDBC
 
-...
-
 ## Installation
 
 Clone this repository
@@ -9,6 +7,8 @@ Clone this repository
 ```bash
 git clone https://github.com/baguilar6174/java-learning-jdbc.git
 ```
+
+Open this project in your Java development environment (I use IntelliJ IDEA) and download maven dependencies.
 
 ## Running the app
 
@@ -20,6 +20,8 @@ If you need local Postgres database
 This command create a local volume in root project to save data.
 
 - Run `data/ecommerce.sql` script to fill the database with data
+
+- Run this project in `App.java` file
 
 ---
 
@@ -121,6 +123,21 @@ If you're using a DAO as a pure abstraction layer you're going to have a DTO or 
 - Not recommended for most, if not all, use cases utilizing RDBMS
 - Often either a driver or a transactional setting
 
+### Object Relational Mapping (ORM)
+
+- Allows to you interact with DB through objects
+- Known as a technique, but most developers call the library an ORM
+- Tends to reduce code, especially in result set mapping
+- Hibernate is a common implementation of a library that uses ORM
+
+### Java Persistence API (JPA)
+
+- Standard Java EE (Jakarta EE) specification for ORM
+- Hibernate is an implementation of JPA
+- Streamlines persistence to Standard Format
+- Reduces JDBC code
+- Focus on OOP
+
 ---
 
 ## My process
@@ -133,15 +150,10 @@ If you're using a DAO as a pure abstraction layer you're going to have a DTO or 
 
 ### What I learned
 
-- 
-
-## Development Features
-
-- 
-
-## Improves
-
-- 
+- RDBMS
+- JDBC
+- CRUD operations using DAO and DTO
+- Basics of transactions
 
 ## Stay in touch
 
