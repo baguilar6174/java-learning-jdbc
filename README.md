@@ -159,4 +159,4 @@ If you're using a DAO as a pure abstraction layer you're going to have a DTO or 
 
 - Website - [www.bryan-aguilar.com](https://www.bryan-aguilar.com/)
 - Medium - [baguilar6174](https://baguilar6174.medium.com/)
-- Linkedin - [baguilar6174](https://www.linkedin.com/in/baguilar6174)
+- LinkedIn - [baguilar6174](https://www.linkedin.com/in/baguilar6174)
